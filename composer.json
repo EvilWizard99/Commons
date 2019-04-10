@@ -1,7 +1,7 @@
 {
     "name": "ewc/commons",
     "description": "Common and Core libraries and systems for EWC frameworks.",
-    "keywords": ["template", "composer", "package"],
+    "keywords": ["EWC", "MetaData", "Libraries", "Common"],
     "license": "DBAD",
     "authors": [
         {
