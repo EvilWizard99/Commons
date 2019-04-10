@@ -9,7 +9,7 @@
             "email": "evil.wizard95@googlemail.com"
         }
     ],
-    "type": "project",
+    "type": "library",
     "require": {
 		"php": ">=5.6"
     },
