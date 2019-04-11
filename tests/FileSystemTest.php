@@ -6,25 +6,23 @@
  * @version 1.0.0
  * @author Russell Nash <evil.wizard95@googlemail.com>
  * @copyright 2019 Evil Wizard Creation.
- * 
- * @uses	FileSystemException To indicate errors.
  */
 class FileSystemTest extends PHPUnit_Framework_TestCase {
 	
-  /**
-  * Just check if the FileSystem has no syntax error 
-  */
-  public function testIsThereAnySyntaxError(){
-	$var = \EWC\Commons\Libraries\FileSystem::getInstance();
-	$this->assertTrue(is_object($var));
-	unset($var);
-  }
+	/**
+	 * Just check if the Parser has no syntax error 
+	 */
+	public function testIsThereAnySyntaxError(){
+		$var = \EWC\Commons\Libraries\FileSystem::getInstance();
+		$this->assertTrue(is_object($var));
+		unset($var);
+	}
   
-  /**
-  * Just check if the FileSystem has no syntax error 
-  */
-  public function testExists(){
-	$this->assertTrue(\EWC\Commons\Libraries\FileSystem::exists(__FILE__));
-  }
+	/**
+	 * Just check if the Parser has no syntax error 
+	 */
+	public function testExists(){
+		$this->assertTrue(\EWC\Commons\Libraries\FileSystem::exists(__FILE__));
+	}
   
 }
