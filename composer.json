@@ -2,7 +2,8 @@
     "name": "ewc/commons",
     "description": "Common and Core libraries and systems for EWC frameworks.",
     "keywords": ["EWC", "MetaData", "Libraries", "Common"],
-    "license": "DBAD",
+    "license": "0BSD",
+	"readme": "Readme.md",
     "authors": [
         {
             "name": "Evil Wizard",
@@ -12,9 +13,6 @@
     "type": "library",
     "require": {
 		"php": ">=5.6"
-    },
-	"require-dev": {
-		"phpunit/phpunit": "5.2.*"
     },
 	"autoload": {
         "psr-4": {
