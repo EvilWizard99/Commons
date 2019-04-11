@@ -12,16 +12,14 @@ class FileSystemTest extends PHPUnit_Framework_TestCase {
 	/**
 	 * Just check if the Parser has no syntax error 
 	 */
-	public function testIsThereAnySyntaxError(){
-		$var = \EWC\Commons\Libraries\FileSystem::getInstance();
-		$this->assertTrue(is_object($var));
-		unset($var);
+	public function testIsThereAnySyntaxError() {
+		$this->assertTrue(is_object(\EWC\Commons\Libraries\FileSystem::getInstance()));
 	}
   
 	/**
 	 * Just check if the Parser has no syntax error 
 	 */
-	public function testExists(){
+	public function testExists() {
 		$this->assertTrue(\EWC\Commons\Libraries\FileSystem::exists(__FILE__));
 	}
   
