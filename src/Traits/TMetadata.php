@@ -88,7 +88,7 @@ trait TMetadata {
 			$source = json_decode($source, TRUE);
 			if(!$source) {
 			// the JSON string was invalid
-				throw MetadataTraitException::withBadJSON();
+				throw MetadataTraitException::withBadSourceJSON();
 			}
 		}
 		if(!is_array($source)) {

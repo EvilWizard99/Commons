@@ -26,6 +26,7 @@ class ContextError {
 	 * @param 	Exception $exception Optional caught exception.
 	 */
 	public function __construct(Exception $exception=NULL) {
+		if(is_null($exception)) { $exception = new Exception("No Exception Context Set"); }
 		// set the caught exception context
 		$this->exception = $exception;
 	}
