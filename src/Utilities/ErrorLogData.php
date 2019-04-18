@@ -19,14 +19,9 @@ class ErrorLogData {
 	protected $data = [];
 	
 	/**
-	 * @var	Array The data to be logged.
+	 * @var	String A name for data to be logged.
 	 */
 	protected $data_name;
-	
-	/**
-	 * @var	String The file path to be used for the data.
-	 */
-	protected $destination_file = NULL;
 	
 	/**
 	 * ErrorLogData constructor.
@@ -35,7 +30,7 @@ class ErrorLogData {
 	 * @param	Splat $data List of data to be logged.
 	 */
 	public function __construct($data_name, $data) {
-		$this->data = $data;
+		$this->data = (is_array($data)) ? $data : [$data];
 		$this->data_name = $data_name;
 	}
 	
@@ -93,7 +88,7 @@ class ErrorLogData {
 			$_ .= "{$indent})\n";
 		} else {
 		// data section is not an array
-			// @todo check for object, resource and other types to convert to string correctly
+			// check for object, resource and other types to convert to string correctly
 			if(is_resource($v)) {
 			// data is a resource handle
 				$_ .= get_resource_type($v) . "\n";
