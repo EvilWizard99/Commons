@@ -293,6 +293,8 @@ class Image {
 	 * Generate a random hexidecimal colour code.
 	 *
 	 * @return	String A randomly generated hexidecimal colour code.
+	 * 
+	 * @todo refactor & move to the String Library.
 	 */
 	public static function generateRandomHexColour() {
 		// define the available characters for a valid hexidecimal colour value

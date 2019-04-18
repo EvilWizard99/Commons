@@ -3,6 +3,7 @@
 namespace EWC\Commons\Libraries;
 
 use Exception;
+use InvalidArgumentException;
 
 /**
  * Class String
@@ -112,7 +113,7 @@ class String {
 	 */
 	public static function generateNumberCode($length) {
 		// ensure the min and max are correct
-		if((!is_numeric($length)) || ($length < 1)) { throw new Exception("length value [{$length}] is invalid"); }
+		if((!is_numeric($length)) || ($length < 1)) { throw new InvalidArgumentException("length value [{$length}] is invalid"); }
 		// generate the random numeric code of the specified length
 		return static::generateRandom($length, $length, FALSE, FALSE, FALSE, TRUE);
 	}
