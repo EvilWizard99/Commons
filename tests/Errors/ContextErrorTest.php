@@ -1,5 +1,12 @@
 <?php 
 
+namespace EWC\Commons\Tests\Errors;
+
+use PHPUnit_Framework_TestCase;
+use EWC\Commons\Errors\ContextError;
+use stdClass;
+use Exception;
+
 /**
  * Corresponding Test Class for \EWC\Commons\Errors\ContextError
  * 
@@ -46,7 +53,7 @@ class ContextErrorTest extends PHPUnit_Framework_TestCase {
 	 * Just check if the ContextError has no syntax error.
 	 */
 	public function testIsThereAnySyntaxError() {
-		$var = new \EWC\Commons\Errors\ContextError();
+		$var = new ContextError;
 		$this->assertTrue(is_object($var));
 		unset($var);
 	}
@@ -57,7 +64,7 @@ class ContextErrorTest extends PHPUnit_Framework_TestCase {
 	 * @dataProvider validConstructSourceProvider
 	 */
 	public function testGetExceptionReturnsAnException($data) {
-		$var = new \EWC\Commons\Errors\ContextError($data);
+		$var = new ContextError($data);
 		$this->assertInstanceOf("Exception", $var->getException());
 		unset($var);
 	}
@@ -69,7 +76,7 @@ class ContextErrorTest extends PHPUnit_Framework_TestCase {
 	 * @expectedException PHPUnit_Framework_Error
 	 */
 	public function testThrowsInvalidConstructSource($data) {
-		$var = new \EWC\Commons\Errors\ContextError($data);
+		$var = new ContextError($data);
 		$this->assertInstanceOf("Exception", $var->getException());
 		unset($var);
 	}
