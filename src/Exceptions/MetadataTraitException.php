@@ -50,7 +50,7 @@ class MetadataTraitException extends ArrayPathTraitException {
 	 * @param	Integer $code An error code for the exception.
 	 * @param	Exception $previous An optional previously thrown exception.
 	 */
-	public function __construct($message="",$code=0, Exception $previous=NULL) {
+	public function __construct($message='', $code=0, Exception $previous=NULL) {
 		parent::__construct($message, $code, $previous);
 	}
 	
@@ -75,7 +75,7 @@ class MetadataTraitException extends ArrayPathTraitException {
 	/**
 	 * Generate a metadata section already set, use update instead exception.
 	 * 
-	 * @param	String $full_path The full metadata structure path.
+	 * @param	String $full_path The full metadata structure path to the section.
 	 * @param	String $path_section The path section that does not exist in the metadata structure.
 	 * @return	MetadataTraitException
 	 */

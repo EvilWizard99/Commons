@@ -44,13 +44,14 @@ class FileSystemException extends RuntimeException {
 	 * @param	Integer $code An error code for the exception.
 	 * @param	Exception $previous An optional previously thrown exception.
 	 */
-	public function __construct($message = '', $code = 0, Exception $previous = NULL) {
+	public function __construct($message='', $code=0, Exception $previous=NULL) {
 		parent::__construct($message, $code, $previous);
 	}
 	
 	/**
 	 * Generate a file not found exception.
 	 * 
+	 * @param	String $file The name / path to the file not found.
 	 * @return	FileSystemException
 	 */
 	public static function withFileNotFound($file) {
@@ -60,15 +61,17 @@ class FileSystemException extends RuntimeException {
 	/**
 	 * Generate a failed to make a directory exception.
 	 * 
+	 * @param	String $folder_name The name / path to the folder to create.
 	 * @return	FileSystemException
 	 */
-	public static function withMakeDirFailed($file) {
-		return new static("Failed to make directory [{$file}].", static::MAKE_DIR_FAILED);
+	public static function withMakeDirFailed($folder_name) {
+		return new static("Failed to make directory [{$folder_name}].", static::MAKE_DIR_FAILED);
 	}
 	
 	/**
 	 * Generate a failed to open a file for writing exception.
 	 * 
+	 * @param	String $file The name / path to the file not able to be opened for writing.
 	 * @return	FileSystemException
 	 */
 	public static function withWriteFileFailed($file) {
@@ -78,6 +81,7 @@ class FileSystemException extends RuntimeException {
 	/**
 	 * Generate a failed to write the file contents exception.
 	 * 
+	 * @param	String $file The name / path to the file not able to write the contents to.
 	 * @return	FileSystemException
 	 */
 	public static function withWriteFileContentsFailed($file) {

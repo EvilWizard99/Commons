@@ -58,7 +58,7 @@ class ReflectorException extends RuntimeException {
 	 * @param	Integer $code An error code for the exception.
 	 * @param	Exception $previous An optional previously thrown exception.
 	 */
-    public function __construct($message, $code=ReflectorException::CODE_GENERAL, Exception $previous=NULL)  {
+    public function __construct($message='', $code=0, Exception $previous=NULL)  {
         parent::__construct($message, $code, $previous);
     }
 	
@@ -99,12 +99,12 @@ class ReflectorException extends RuntimeException {
 	 * 
 	 * @param	String $classname The fully qualified class name of the object being reflected.
 	 * @param	String $method_name The method name attempted to be called.
-	 * @param	Integer $required The required number of parameters for the method.
-	 * @param	Integer $supplied The supplied number of parameters for the method.
+	 * @param	Integer $required The number of required parameters for the method.
+	 * @param	Integer $supplied The number of supplied parameters to the method.
 	 * @return	ReflectorException
 	 */
 	public static function withArgumentCountMismatch($classname, $method_name, $required, $supplied) {
-		return new static("{$classname}::{$method_name}() expects {$required} parameters, {$supplied} given", static::ARGUMENT_COUNT_MISMATCH);
+		return new static("{$classname}::{$method_name}() expects {$required} parameters, {$supplied} given.", static::ARGUMENT_COUNT_MISMATCH);
 	}
 	
 	/**
@@ -115,7 +115,7 @@ class ReflectorException extends RuntimeException {
 	 * @return	ReflectorException
 	 */
 	public static function withTypeMismatch($classname, $type) {
-		return new static("{$classname} does not match expected type [{$type}]", static::REFLECTION_TYPE_MISMATCH);
+		return new static("[{$classname}] does not match expected type [{$type}].", static::REFLECTION_TYPE_MISMATCH);
 	}
 
 }

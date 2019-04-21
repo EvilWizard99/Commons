@@ -41,7 +41,7 @@ class ArrayPathTraitException extends RuntimeException {
 	 * @param	Integer $code An error code for the exception.
 	 * @param	Exception $previous An optional previously thrown exception.
 	 */
-	public function __construct($message='',$code=0, Exception $previous=NULL) {
+	public function __construct($message='', $code=0, Exception $previous=NULL) {
 		parent::__construct($message, $code, $previous);
 	}
 	
@@ -53,7 +53,7 @@ class ArrayPathTraitException extends RuntimeException {
 	 * @return	ArrayPathTraitException
 	 */
 	public static function withPathNotFound($full_path, $path_section) {
-		return new static("The array structure does not contain the following path section [{$path_section}] - [{$full_path}]", static::ARRAY_PATH_NOT_FOUND);
+		return new static("The array structure does not contain the following path section [{$path_section}] - [{$full_path}].", static::ARRAY_PATH_NOT_FOUND);
 	}
 	
 	/**
