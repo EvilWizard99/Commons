@@ -19,10 +19,10 @@ class ContextErrorTest extends PHPUnit_Framework_TestCase {
 	/**
 	 * @var	Exception Provides valid exception source to create ContextError from.
 	 */
-	protected $ex;
+	protected $ex = NULL;
 	
 	/**
-	 * Setup the test scenario.
+	 * Setup the test fixture.
 	 */
 	public function setUp() {
 		parent::setUp();
@@ -30,12 +30,20 @@ class ContextErrorTest extends PHPUnit_Framework_TestCase {
 	}
 	
 	/**
+	 * Clean up the test fixture.
+	 */
+	public function tearDown() {
+		parent::tearDown();
+		$this->ex = NULL;
+	}
+
+		/**
 	 * Provides valid source to create ContextError from.
 	 */
 	public function validConstructSourceProvider() {
 		return [
-			"new exception"	=> [$this->ex],
-			"no exception"	=> [NULL]
+			"valid exception"		=> [$this->ex],
+			"valid no exception"	=> [NULL]
 		];
 	}
 	
@@ -44,8 +52,11 @@ class ContextErrorTest extends PHPUnit_Framework_TestCase {
 	 */
 	public function invalidConstructSourceProvider() {
 		return [
-			"garbage"				=> ["bla"],
-			"invalid object source"	=> [new stdClass]
+			"invalid string construct"	=> ["bla"],
+			"invalid object construct"	=> [new stdClass],
+			"invalid numeric construct"	=> [1],
+			"invalid array construct"	=> [[$this->ex]],
+			"invalid empty construct"	=> []
 		];
 	}
 	
