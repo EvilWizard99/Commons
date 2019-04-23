@@ -136,7 +136,7 @@ class FileSystem {
 	public function writeFile($filename, $content, $make_path=FALSE) {
 		if(static::fileExists($filename)) {
 		// file did already exists
-			throw new FileSystemException("Unable to overwrite file [{$filename}]");
+			throw FileSystemException::withOverwriteFileContentsDisallowed($filename);
 		}
 		// make sure the path to the file exists
 		if(!static::folderExists(dirname($filename)) && $make_path) { 

@@ -2,6 +2,7 @@
 
 namespace EWC\Commons\Utilities;
 
+use EWC\Commons\Interfaces\IDataStructureDefinition;
 use EWC\Commons\Utilities\DataType\Types;
 use EWC\Commons\Utilities\MetaData;
 use EWC\Commons\Exceptions\MetadataTraitException;
@@ -16,11 +17,12 @@ use EWC\Commons\Exceptions\MetadataTraitException;
  * @author Russell Nash <evil.wizard95@googlemail.com>
  * @copyright 2018 Evil Wizard Creation.
  * 
+ * @uses	IDataStructureDefinition For concrete implimentation of abstract interface.
  * @uses	Types For constants value use.
- * @uses	MetaData For the API Request parameters Definition.
+ * @uses	MetaData To model the parameters Definition structure.
  * @uses	MetadataTraitException Catches and throws named exceptions.
  */
-abstract class ABasicDataStructureDefinition {
+abstract class ABasicDataStructureDefinition implements IDataStructureDefinition {
 	
 	/**
 	 * @var	MetaData The data structure parameter names and definition properties.
@@ -103,6 +105,14 @@ abstract class ABasicDataStructureDefinition {
 	public function hasParameterProperty($parameter_name, $property) { return $this->definition->has("{$parameter_name}.{$property}"); }
 	
 	/**
+	 * Check if a parameter name is defined as optional.
+	 * 
+	 * @param	String $parameter_name The parameter name to check.
+	 * @return	Boolean True if the parameter name is defined as optional.
+	 */
+	public function isParameterOptional($parameter_name) { return in_array($parameter_name, $this->optional_parameters); }
+	
+	/**
 	 * Get a parameter definition property.
 	 * 
 	 * @param	String $parameter_name The parameter name to get the property of.
@@ -125,14 +135,6 @@ abstract class ABasicDataStructureDefinition {
 	 * @return	Array The list of defined parameter names.
 	 */
 	public function getParameterNames() { return $this->parameters; }
-	
-	/**
-	 * Check if a parameter name is defined as optional.
-	 * 
-	 * @param	String $parameter_name The parameter name to check.
-	 * @return	Boolean True if the parameter name is defined as optional.
-	 */
-	public function isParameterOptional($parameter_name) { return in_array($parameter_name, $this->optional_parameters); }
 	
 	/**
 	 * Perform addition parameter definition checks.

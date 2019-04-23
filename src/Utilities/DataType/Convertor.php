@@ -2,7 +2,7 @@
 
 namespace EWC\Commons\Utilities\DataType;
 
-use EWC\Commons\Utilities\ABasicDataStructureDefinition;
+use EWC\Commons\Interfaces\IDataStructureDefinition;
 use EWC\Commons\Utilities\DataType\Types;
 use EWC\Commons\MetaData;
 use DateTime;
@@ -17,7 +17,7 @@ use Exception;
  * @author Russell Nash <evil.wizard95@googlemail.com>
  * @copyright 2018 Evil Wizard Creation.
  * 
- * @uses	ABasicDataStructureDefinition For the data structure parameter definition properties.
+ * @uses	IDataStructureDefinition For the data structure parameter definition properties.
  * @uses	Types For constants value use.
  * @uses	MetaData As a viable inflatable named object value.
  * @uses	DateTime As a viable inflatable named object value.
@@ -26,10 +26,10 @@ use Exception;
 class Convertor {
 	
 	/**
-	 * Cast the raw value to certain specific types.
+	 * Cast a raw value to certain specific types.
 	 * 
-	 * @param	String $value The config value to cast.
-	 * @return	Mixed The config value type cast.
+	 * @param	String $value The value to cast.
+	 * @return	Mixed The value type cast.
 	 */
 	final public static function cast($value) {
 		// check what type the value is
@@ -46,9 +46,15 @@ class Convertor {
 			case is_float($value):
 			// value is equal to a floating point number
 				return (float) $value;
+			case is_numeric($value):
+			// value is numeric but a string
+				if(filter_var($value, FILTER_VALIDATE_INT) !== FALSE) {
+					return (int) $value;
+				}
+				return (float) $value;
 			default:
 			// no special case
-				// just return the property value from the file
+				// just return the value supplied
 				return (string) $value;
 		endswitch;
 	}
@@ -56,12 +62,12 @@ class Convertor {
 	/**
 	 * Convert a value from raw to type cast value.
 	 * 
-	 * @param	ABasicDataStructureDefinition $definition The data structure parameter definition.
+	 * @param	IDataStructureDefinition $definition The data structure parameter definition.
 	 * @param	Array $parameter_name The name of the parameter in the data structure.
 	 * @param	Mixed $value The raw parameter value to convert to type.
 	 * @return	Mixed The type cast value.
 	 */
-	final public static function to(ABasicDataStructureDefinition $definition, $parameter_name, $value) {
+	final public static function to(IDataStructureDefinition $definition, $parameter_name, $value) {
 		// process and cast the parameter value to the defined data type
 		switch($definition->getParameterProperty($parameter_name, "data_type")) {
 			case Types::OBJECT_DATETIME :
@@ -110,12 +116,12 @@ class Convertor {
 	/**
 	 * Convert a typecast value back to raw value.
 	 * 
-	 * @param	ABasicDataStructureDefinition $definition The data structure parameter definition.
+	 * @param	IDataStructureDefinition $definition The data structure parameter definition.
 	 * @param	Array $parameter_name The name of the parameter in the data structure.
 	 * @param	Mixed $value The raw parameter value to convert to type.
 	 * @return	Mixed The type cast value.
 	 */
-	final public static function from(ABasicDataStructureDefinition $definition, $parameter_name, $value) {
+	final public static function from(IDataStructureDefinition $definition, $parameter_name, $value) {
 		switch($definition->getParameterProperty($parameter_name, "data_type")) {
 			case Types::OBJECT_DATETIME :
 			// convert the parameter value from DateTime

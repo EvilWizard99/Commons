@@ -36,6 +36,11 @@ class FileSystemException extends RuntimeException {
 	 * @var	Integer Code for failing to write the file contents.
 	 */
 	const WRITE_FILE = 210;
+	
+	/**
+	 * @var	Integer Code for overwriting file contents not allowed.
+	 */
+	const OVERWRITE_FILE_DISALLOWED = 220;
 
 	/**
 	 * FileSystemException constructor.
@@ -86,6 +91,16 @@ class FileSystemException extends RuntimeException {
 	 */
 	public static function withWriteFileContentsFailed($file) {
 		return new static("Unable to write file contents for [{$file}].", static::WRITE_FILE);
+	}
+	
+	/**
+	 * Generate a failed to write the file contents exception.
+	 * 
+	 * @param	String $file The name / path to the file not able to write the contents to.
+	 * @return	FileSystemException
+	 */
+	public static function withOverwriteFileContentsDisallowed($file) {
+		return new static("Unable to overwrite file [{$file}].", static::OVERWRITE_FILE_DISALLOWED);
 	}
 
 }
