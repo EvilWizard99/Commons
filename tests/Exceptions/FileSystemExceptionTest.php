@@ -66,5 +66,16 @@ class FileSystemExceptionTest extends PHPUnit_Framework_TestCase {
 	public function testWriteFileContentFailedThrowsExceptionWithWriteFileContentsFailed() {
 		throw FileSystemException::withWriteFileContentsFailed("/file/to/fail.ext");
 	}
+	
+	/**
+	 * Make sure write file contents failed throws expected exception.
+	 * 
+	 * @expectedException \EWC\Commons\Exceptions\FileSystemException
+	 * @expectedExceptionMessageRegExp /Unable to overwrite file \[.+\]\./
+	 * @expectedExceptionCode \EWC\Commons\Exceptions\FileSystemException::OVERWRITE_FILE_DISALLOWED
+	 */
+	public function testOverwriteFileContentDisallowedThrowsExceptionWithOverwriteFileContentsDisallowedd() {
+		throw FileSystemException::withOverwriteFileContentsDisallowed("/file/to/fail.ext");
+	}
   
 }

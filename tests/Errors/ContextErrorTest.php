@@ -37,7 +37,7 @@ class ContextErrorTest extends PHPUnit_Framework_TestCase {
 		$this->ex = NULL;
 	}
 
-		/**
+	/**
 	 * Provides valid source to create ContextError from.
 	 */
 	public function validConstructSourceProvider() {
