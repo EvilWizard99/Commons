@@ -94,7 +94,7 @@ class FileSystemException extends RuntimeException {
 	}
 	
 	/**
-	 * Generate a failed to write the file contents exception.
+	 * Generate a overwrite the file contents disallowed exception.
 	 * 
 	 * @param	String $file The name / path to the file not able to write the contents to.
 	 * @return	FileSystemException
