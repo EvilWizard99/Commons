@@ -39,6 +39,26 @@ class ConvertorTest extends PHPUnit_Framework_TestCase {
 			"integer 1"		=> [0]
 		];
 	}
+
+	/**
+	 * Provides valid Integer values to cast.
+	 */
+	public function validIntegerProvider() {
+		return [
+			"string 1234"	=> ["1234"],
+			"integer 1234"	=> [1234]
+		];
+	}
+
+	/**
+	 * Provides valid Integer values to cast.
+	 */
+	public function validFloatProvider() {
+		return [
+			"string 12.34"	=> ["12.34"],
+			"float 12.34"	=> [12.34]
+		];
+	}
 	
 	/**
 	 * Just check if the Image has no syntax error.
@@ -50,17 +70,23 @@ class ConvertorTest extends PHPUnit_Framework_TestCase {
 	}
 	
 	/**
-	 * Make sure variables are cast to their specific type.
+	 * Just check that integer numbers cast correctly.
+	 * 
+	 * @dataProvider validIntegerProvider
 	 */
-	public function testCastToSpecificTypeReturnsSpecificType() {		
-		$this->assertTrue(is_int(Convertor::cast(1234)), "integer [1234] is not Integer");
-		$this->assertTrue(is_int(Convertor::cast("1234")), "string [1234] is not Integer");
-		$this->assertTrue(is_float(Convertor::cast(12.34)), "float [12.34] is not Float");
-		$this->assertTrue(is_float(Convertor::cast("12.34")), "string [12.34] is not float");
-		$this->assertGreaterThan(0, Convertor::cast(1234), "integer [1234] is not greater than 0");
-		$this->assertGreaterThan(0, Convertor::cast(12.34), "integer [12.34] is not greater than 0");		
-		$this->assertGreaterThan(0, Convertor::cast("1234"), "string [1234] is not greater than 0");
-		$this->assertGreaterThan(0, Convertor::cast("12.34"), "string [12.34] is not greater than 0");
+	public function testCastToInteger($data) {
+		$this->assertTrue(is_int(Convertor::cast($data)), "[{$data}] is not Integer");
+		$this->assertGreaterThan(0, Convertor::cast($data), "[{$data}] is not greater than 0");
+	}
+	
+	/**
+	 * Just check that floating point numbers cast correctly.
+	 * 
+	 * @dataProvider validFloatProvider
+	 */
+	public function testCastToFloat($data) {
+		$this->assertTrue(is_float(Convertor::cast($data)), "[{$data}] is not Float");
+		$this->assertGreaterThan(0, Convertor::cast($data), "[{$data}] is not greater than 0");
 	}
 	
 	/**

@@ -142,7 +142,6 @@ class FileSystem {
 		if(!static::folderExists(dirname($filename)) && $make_path) { 
 			try {
 				$this->makePath(dirname($filename));
-				
 			} catch (FileSystemException $ex) {
 				// @todo make dire if the path exists failed
 				var_dump($filename);
