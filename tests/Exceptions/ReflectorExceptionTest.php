@@ -55,7 +55,7 @@ class ReflectorExceptionTest extends PHPUnit_Framework_TestCase {
 	 * @expectedExceptionMessageRegExp /Unable to get reflected instance of object \[.+\]\./
 	 * @expectedExceptionCode \EWC\Commons\Exceptions\ReflectorException::REFLECTIED_INSTANCE_FAILED
 	 */
-	public function testReflectionInstancFailedeThrowsExceptionWithFailedToGetInstance() {
+	public function testReflectionInstanceFailedThrowsExceptionWithFailedToGetInstance() {
 		throw ReflectorException::withFailedToGetInstance("\\Namespaced\\Instance\\Fails\\Classname", $this->ref_ex);
 	}
 	
