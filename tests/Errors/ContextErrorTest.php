@@ -84,7 +84,7 @@ class ContextErrorTest extends PHPUnit_Framework_TestCase {
 	 * Just check if the ContextError throws invalid construct.
 	 * 
 	 * @dataProvider invalidConstructSourceProvider
-	 * @expectedException PHPUnit_Framework_Error
+	 * @expectedException TypeError
 	 */
 	public function testThrowsInvalidConstructSource($data) {
 		$var = new ContextError($data);

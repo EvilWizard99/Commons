@@ -10,6 +10,11 @@
 				</testsuite>
 			</testsuites>
 			<testsuites>
+				<testsuite name="Exceptions">
+					<directory>tests/Exceptions</directory>
+				</testsuite>
+			</testsuites>
+			<testsuites>
 				<testsuite name="Utilities">
 					<directory>tests/Utilities</directory>
 				</testsuite>
@@ -27,11 +32,6 @@
 			<testsuites>
 				<testsuite name="Errors">
 					<directory>tests/Errors</directory>
-				</testsuite>
-			</testsuites>
-			<testsuites>
-				<testsuite name="Exceptions">
-					<directory>tests/Exceptions</directory>
 				</testsuite>
 			</testsuites>
 </phpunit>
