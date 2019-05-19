@@ -114,7 +114,8 @@ class ErrorLogger {
 	 * ErrorLogger constructor.
 	 */
 	protected function __construct() {
-		$this->custom_log_to_path = APP_ROOT . "/logs/";
+		$log_root_path = (defined("APP_ROOT")) ? APP_ROOT : getcwd();
+		$this->custom_log_to_path = "{$log_root_path}/logs/";
 		$loggers = [
 			static::TYPE_GENERAL		=> "general",
 			static::TYPE_NOTICE		=> "notice",
